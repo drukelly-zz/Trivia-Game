@@ -1,0 +1,125 @@
+{
+  "response_code": 0,
+  "results": [
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What was the name of the WWF professional wrestling tag team made up of the wrestlers Ax and Smash?",
+          "correct_answer": "Demolition",
+          "incorrect_answers": [
+              "The Dream Team",
+              "The Bushwhackers",
+              "The British Bulldogs"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "In the video-game franchise Kingdom Hearts, the main protagonist, carries a weapon with what shape?",
+          "correct_answer": "Key",
+          "incorrect_answers": [
+              "Sword",
+              "Pen",
+              "Cellphone"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "Which American president appears on a one dollar bill?",
+          "correct_answer": "George Washington",
+          "incorrect_answers": [
+              "Thomas Jefferson",
+              "Abraham Lincoln",
+              "Benjamin Franklin"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What is the name of the Jewish New Year?",
+          "correct_answer": "Rosh Hashanah",
+          "incorrect_answers": [
+              "Elul",
+              "New Year",
+              "Succoss"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What is on display in the Madame Tussaud&#039;s museum in London?",
+          "correct_answer": "Wax sculptures",
+          "incorrect_answers": [
+              "Designer clothing",
+              "Unreleased film reels",
+              "Vintage cars"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What was the nickname given to the Hughes H-4 Hercules, a heavy transport flying boat which achieved flight in 1947?",
+          "correct_answer": "Spruce Goose",
+          "incorrect_answers": [
+              "Noah&#039;s Ark",
+              "Fat Man",
+              "Trojan Horse"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What is the Spanish word for &quot;donkey&quot;?",
+          "correct_answer": "Burro",
+          "incorrect_answers": [
+              "Caballo",
+              "Toro",
+              "Perro"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "Five dollars is worth how many nickles?",
+          "correct_answer": "100",
+          "incorrect_answers": [
+              "50",
+              "25",
+              "69"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What do the letters in the GMT time zone stand for?",
+          "correct_answer": "Greenwich Mean Time",
+          "incorrect_answers": [
+              "Global Meridian Time",
+              "General Median Time",
+              "Glasgow Man Time"
+          ]
+      },
+      {
+          "category": "General Knowledge",
+          "type": "multiple",
+          "difficulty": "easy",
+          "question": "What was the first ever London Underground line to be built?",
+          "correct_answer": "Metropolitan Line",
+          "incorrect_answers": [
+              "Circle Line",
+              "Bakerloo Line",
+              "Victoria Line"
+          ]
+      }
+  ]
+}

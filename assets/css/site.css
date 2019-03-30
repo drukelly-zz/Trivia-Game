@@ -56,7 +56,7 @@ figure {
   margin-right: .25em;
 }
 
-.options ul {
+.options {
   display: flex;
   flex-flow: row wrap;
   /* flex-wrap: wrap; */
@@ -65,19 +65,17 @@ figure {
   margin: 0;
   padding: 0;
 }
-.options li {
-  margin: 1em 0;
-  width: 45%;
-}
 .options button {
   background-color: transparent;
   border: 2px solid var(--offblack);
   cursor: pointer;
   display: inline-block;
   font-weight: bold;
+  margin: 1em 0;
   outline: none;
   padding: 1em;
-  width: 100%;
+  width: 45%;
+  /* width: 100%; */
 }
 .options button:hover {
   border-color: var(--red);
@@ -95,7 +93,8 @@ figure {
 #countdown-number {
   color: inherit;
   display: inline-block;
-  line-height: 40px;
+  font: 14px/40px monospace;
+  text-align: center;
 }
 
 svg {
