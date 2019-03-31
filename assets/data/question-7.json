@@ -1,0 +1,12 @@
+{
+  "category": "General Knowledge",
+  "type": "multiple",
+  "difficulty": "easy",
+  "question": "What is Tasmania?",
+  "correct_answer": "An Australian State",
+  "incorrect_answers": [
+    "A flavor of Ben and Jerry&#039;s ice-cream",
+    "A Psychological Disorder",
+    "The Name of a Warner Brothers Cartoon Character"
+  ]
+}

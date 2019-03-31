@@ -29,9 +29,12 @@ h1 {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
   margin: 0 auto;
   position: relative;
-  transform: translateY(15%);
   width: 760px;
 }
 
@@ -43,7 +46,7 @@ figure {
   padding: 0;
 }
 figure img {
-  transition: all 500ms ease-in-out;
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin: auto;
   width: 100%;
 }
@@ -170,7 +173,6 @@ svg circle {
 /* Media Query: Tablet */
 @media screen and (max-width: 767px) {
   .container {
-    transform: translateY(6%);
     width: 580px;
   }
 }
@@ -181,7 +183,6 @@ svg circle {
     font-size: .67em;
   }
   .container {
-    transform: translateY(0%);
     width: calc(100% - 65px);
   }
 }

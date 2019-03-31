@@ -1,0 +1,12 @@
+{
+  "category": "General Knowledge",
+  "type": "multiple",
+  "difficulty": "easy",
+  "question": "What is the Spanish word for &quot;donkey&quot;?",
+  "correct_answer": "Burro",
+  "incorrect_answers": [
+    "Caballo",
+    "Toro",
+    "Perro"
+  ]
+}

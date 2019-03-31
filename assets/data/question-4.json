@@ -1,0 +1,12 @@
+{
+  "category": "General Knowledge",
+  "type": "multiple",
+  "difficulty": "easy",
+  "question": "Which restaurant&#039;s mascot is a clown?",
+  "correct_answer": "McDonald&#039;s",
+  "incorrect_answers": [
+    "Whataburger",
+    "Burger King",
+    "Sonic"
+  ]
+}

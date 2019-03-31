@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Because of lexical scope, let these variables
-  // be accessed globally
+  // Because of lexical scope,
+  // let `answer` variables be accessed globally
   let answer;
   // set up the api request in the background
   let queryURL = "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple";
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(result => result.json())
       .then(response => {
         // console.log(`fetch => ${response}`);
-        generateQuestion(response);
+        renderQuestions(response);
       });
   } else {
     const xhr = new XMLHttpRequest();
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (xhr.status === 200) {
           let response = JSON.parse(xhr.response);
           // console.log(`xhr => ${response}`);
-          generateQuestion(response);
+          renderQuestions(response);
         } else {
           console.error(xhr.responseText);
         }
@@ -41,13 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Remove overlay and modal from the dom
     overlay.remove();
     modal.remove();
-    // show divs by removing the hide class
+    // Show divs by removing the hide class
     countdownDiv.classList.remove("hide");
     totalIndicatorDiv.classList.remove("hide");
-    document.querySelector(".question").classList.remove("hide");
-    document.querySelector(".options").classList.remove("hide");
     document.querySelector(".branding").classList.add("active");
-    // start the timer
+    // Start the timer
     startTimer();
   }
   // Assess the answer
@@ -55,13 +53,33 @@ document.addEventListener("DOMContentLoaded", () => {
     answer === selectedAnswer ? console.log("you're right!") : console.log("you're wrong!");
   }
   // Generate question template
-  const generateQuestion = (response) => {
+  const renderQuestions = (response) => {
     let answers = [];
     let questions = response.results;
     questions.forEach(trivia => {
+      // Containing div for each question
       let div = document.createElement("div");
+      div.classList.add("question");
+      // H1 for the question
       let heading = document.createElement("h1");
-      console.log(div, heading);
+      heading.innerHTML = trivia.question;
+      // Group answers in .answers
+      let buttonsDiv = document.createElement("div");
+      buttonsDiv.classList.add("answers");
+      let correctAnswer = trivia.correct_answer;
+      let incorrectAnswers = trivia.incorrect_answers;
+      answers.push(correctAnswer);
+      answers.push(incorrectAnswers);
+
+      
+      console.log(answers.flat())
+
+      // Append H1 and .answers into .question
+      div.appendChild(heading);
+      div.appendChild(buttonsDiv);
+      document.querySelector(".question-and-answers").appendChild(div);
+      // trivia
+      // console.log(trivia);
     });
     // let question = response.results[index].question;
     // answer = response.results[index].correct_answer;
@@ -93,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   // Bubble up from parent of buttons to handle click
-  document.querySelector(".options").addEventListener("click", getSelectedAnswer);
+  // document.querySelector(".options").addEventListener("click", getSelectedAnswer);
   // Shuffle Array
   // Based on the Fisher-Yates shuffle algorithm
   // https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
