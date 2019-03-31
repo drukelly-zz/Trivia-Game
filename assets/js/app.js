@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Because of lexical scope,
   // let `answer` variables be accessed globally
-  let answer;
+  let answer,
+      index = 1;
   // set up the api request in the background
   let queryURL = "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple";
   if (window.fetch) {
@@ -70,10 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let incorrectAnswers = trivia.incorrect_answers;
       answers.push(correctAnswer);
       answers.push(incorrectAnswers);
-
-      
-      console.log(answers.flat())
-
       // Append H1 and .answers into .question
       div.appendChild(heading);
       div.appendChild(buttonsDiv);
@@ -81,23 +78,23 @@ document.addEventListener("DOMContentLoaded", () => {
       // trivia
       // console.log(trivia);
     });
-    // let question = response.results[index].question;
-    // answer = response.results[index].correct_answer;
-    // let incorrectAnswers = response.results[index].incorrect_answers;
-    // answers.push(answer);
-    // answers.push(incorrectAnswers);
-    // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
-    // let answerButtons = shuffle(answers.flat());
+    let question = response.results[index].question;
+    answer = response.results[index].correct_answer;
+    let incorrectAnswers = response.results[index].incorrect_answers;
+    answers.push(answer);
+    answers.push(incorrectAnswers);
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+    let answerButtons = shuffle(answers.flat());
 
-    // document.querySelector(".question").firstElementChild.innerHTML = question;
-    // answerButtons.forEach(answer => {
-    //   let button = document.createElement("button");
-    //   button.setAttribute("type", "button");
-    //   button.classList.add("btn-answer");
-    //   button.innerHTML = answer;
-    //   document.querySelector(".options").appendChild(button);
-    // });
-    // return answer;
+    document.querySelector(".question").firstElementChild.innerHTML = question;
+    answerButtons.forEach(answer => {
+      let button = document.createElement("button");
+      button.setAttribute("type", "button");
+      button.classList.add("btn-answer");
+      button.innerHTML = answer;
+      document.querySelector(".options").appendChild(button);
+    });
+    return answer;
   }
   // Get selected answer
   const getSelectedAnswer = () => {
@@ -111,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   // Bubble up from parent of buttons to handle click
-  // document.querySelector(".options").addEventListener("click", getSelectedAnswer);
+  document.querySelector(".options").addEventListener("click", getSelectedAnswer);
   // Shuffle Array
   // Based on the Fisher-Yates shuffle algorithm
   // https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array

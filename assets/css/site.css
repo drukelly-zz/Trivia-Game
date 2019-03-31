@@ -111,8 +111,8 @@ figure img.active {
 }
 
 .btn-start {
-  background-color: rgba(255, 255, 255, .67);
-  color: var(--offblack);
+  background-color: rgba(0, 0, 0, .67);
+  color: var(--white);
   display: block;
   padding: 1em 1.5em;
   text-align: center;
@@ -120,7 +120,7 @@ figure img.active {
   transition: background 500ms ease-out;
 }
 .btn-start:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .hide {
