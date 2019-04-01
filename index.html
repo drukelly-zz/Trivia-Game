@@ -15,10 +15,14 @@
 </head>
 
 <body>
+  <div class="overlay"></div>
+  <div class="modal">
+    <a href="#" class="btn-start">Start Game</a>
+  </div>
   <div class="container">
     <header>
       <figure>
-        <img src="android-chrome-512x512.png" alt="Trivia" class="branding">
+        <img src="assets/images/app.svg" alt="Trivia" class="branding">
       </figure>
     </header>
     <div class="stats hide">
@@ -30,7 +34,7 @@
       </div>
       <div class="total-indicator"><strong>1</strong> out of <strong>10</strong></div>
     </div>
-    <div class="question-and-answer hide">
+    <div class="question-and-answers hide">
       <div class="question">
         <h1>
           <!-- question injected here -->
@@ -39,6 +43,9 @@
       <div class="options">
         <!-- answers injected here -->
       </div>
+    </div>
+    <div class="message">
+      
     </div>
   </div>
   <script src="assets/js/app.js"></script>
