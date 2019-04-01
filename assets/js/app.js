@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let
-    answers = [],
+  let answers = [],
     index = 0,
     messageDiv = document.querySelector(".message"),
     qaDiv = document.querySelector(".question-and-answers"),
@@ -9,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     right = 0,
     selectedAnswer = 0,
     statsDiv = document.querySelector(".stats"),
+    timerID,
     wrong = 0;
   const callAPI = (response, index) => {
     if (window.fetch) {
@@ -40,35 +40,69 @@ document.addEventListener("DOMContentLoaded", () => {
       xhr.send();
     }
   }
+  // All done with Trivia
+  const doneWithTrivia = () => {
+    statsDiv.remove();
+    qaDiv.remove();
+    messageDiv.innerHTML = `<h1>Great job!</h1>`;
+    messageDiv.innerHTML +=
+      `<table class="scoreboard">
+        <tr>
+          <td><i class="fas fa-check"></i></td>
+          <td><i class="fas fa-times"></i></td>
+        </tr>
+        <tr>
+          <td><strong>${right}</strong></td>
+          <td><strong>${wrong}</strong></td>
+        </tr>
+      </table>`;
+    messageDiv.innerHTML += `<p><a href="#" class="btn-refresh">Play Again</a></p>`;
+    // Restart the game
+    document.querySelector(".btn-refresh").addEventListener("click", (event) => {
+      event.preventDefault();
+      location.reload(true);
+    });
+  }
   // Correct answer handling
   const isCorrect = (message) => {
+    clearInterval(timerID);
     ++right;
     ++index;
-    console.log(right);
     qaDiv.classList.add("hide");
     statsDiv.classList.add("hide");
     messageDiv.classList.remove("hide");
-    messageDiv.innerHTML = `<h1>${message}</h1>`;
-    messageDiv.innerHTML += `<img src="https://media.giphy.com/media/w1XIBQlBjMTsc/giphy-downsized.gif" class="img-25" alt="Correct!">`;
+    messageDiv.innerHTML = `<img src="https://media.giphy.com/media/w1XIBQlBjMTsc/giphy-downsized.gif" class="img-25" alt="Correct!">`;
+    messageDiv.innerHTML += `<h1>${message}</h1>`;
+    selectedAnswer = 0;
     setTimeout(() => nextQuestion(response), 1500);
   }
   // Wrong answer handling
   const isWrong = (message) => {
+    clearInterval(timerID);
     ++wrong;
     ++index;
     qaDiv.classList.add("hide");
     statsDiv.classList.add("hide");
     messageDiv.classList.remove("hide");
-    messageDiv.innerHTML = `<img src="https://media.giphy.com/media/13JksdKh3B1LcQ/giphy-downsized.gif" class="img-25" alt="Wrong!">`;
+    messageDiv.innerHTML = `<img src="https://media.giphy.com/media/6JB4v4xPTAQFi/giphy.gif" class="img-25" alt="Wrong!">`;
     messageDiv.innerHTML += `<h1>${message}</h1>`;
-    setTimeout(() => nextQuestion(response), 1500);
+    selectedAnswer = 0;
+    setTimeout(() => nextQuestion(response), 2250);
   }
   // Next question
   const nextQuestion = (response) => {
-    callAPI(response, index);
-    messageDiv.classList.add("hide");
-    qaDiv.classList.remove("hide");
-    statsDiv.classList.remove("hide");
+    clearInterval(timerID);
+    if (index > 9) {
+      doneWithTrivia();
+    } else {
+      document.querySelector(".options").innerHTML = "";
+      document.querySelector(".total-indicator").firstElementChild.textContent = index+1;
+      callAPI(response, index);
+      messageDiv.classList.add("hide");
+      qaDiv.classList.remove("hide");
+      statsDiv.classList.remove("hide");
+      runTimer();
+    }
   }
   // Generate question template
   const generateQuestion = (response, index) => {
@@ -91,7 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       document.querySelector(".options").appendChild(button);
     });
-    console.log(`The correct answer is ${correctAnswer}`);
+    // DevTools CHEAT MODE
+    // console.log(`The correct answer is ${correctAnswer}`);
   }
   // Shuffle Array
   // Based on the Fisher-Yates shuffle algorithm
@@ -109,6 +144,20 @@ document.addEventListener("DOMContentLoaded", () => {
     Array.from(array);
     return array;
   }
+  // Start the timer
+  const runTimer = () => {
+    const countdownNumber = document.getElementById('countdown-number');
+    // Change const COUNTDOWN and let countdown to desired number
+    // Note: Be sure to change (site.css, line 193) to match the animation duration
+    const COUNTDOWN = 10;
+    let countdown = 10;
+    countdownNumber.textContent = countdown;
+    timerID = setInterval(() => {
+      countdown = --countdown < 0 ? COUNTDOWN : countdown;
+      countdownNumber.textContent = countdown;
+      if (countdown === 0 && selectedAnswer === 0) isWrong("You didn't answer!")
+    }, 1000);
+  }
   // Starts the game
   const startGame = () => {
     let overlay = document.querySelector(".overlay"),
@@ -119,29 +168,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show divs by removing the "hide" class
     statsDiv.classList.remove("hide");
     qaDiv.classList.remove("hide");
+    // Resize svg
     document.querySelector(".branding").classList.add("active");
     // Start the timer
-    startTimer();
-    // Call the API
-    callAPI(response, index);
-  }
-  // Start the timer
-  const startTimer = () => {
-    const countdownNumber = document.getElementById('countdown-number');
-    // Change const COUNTDOWN and let countdown to desired number
-    // Note: Be sure to change (site.css, line 176) to match the animation duration
-    const COUNTDOWN = 10;
-    let countdown = 10;
-    countdownNumber.textContent = countdown;
-    setInterval(() => {
-      countdown = --countdown < 0 ? COUNTDOWN : countdown;
-      countdownNumber.textContent = countdown;
-      if (countdown === 0 && selectedAnswer <= 0) isWrong("You didn't answer!")
-    }, 1000);
+    runTimer();
   }
   // Start the game with button
   document.querySelector(".btn-start").addEventListener("click", (event) => {
     event.preventDefault();
     startGame();
   });
+  // Call the API
+  callAPI(response, index);
 });

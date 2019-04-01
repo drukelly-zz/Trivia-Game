@@ -1,7 +1,7 @@
 :root {
   --blue: #007bff;
   --offblack: #222;
-  --red: #ff4545;
+  --orange: #ff7d28;
   --teal: #00e1e1;
   --white: #efefef;
   --yellow: #ffc107;
@@ -74,7 +74,8 @@ figure img.active {
   z-index: 20;
 }
 
-.btn-start {
+.btn-start,
+.btn-refresh {
   background-color: rgba(0, 0, 0, .67);
   color: var(--white);
   display: block;
@@ -84,7 +85,8 @@ figure img.active {
   transition: background 500ms ease-out;
 }
 
-.btn-start:hover {
+.btn-start:hover,
+.btn-refresh {
   background-color: rgba(0, 0, 0, 1);
 }
 
@@ -129,8 +131,8 @@ figure img.active {
 }
 
 .options button:hover {
-  border-color: var(--red);
-  color: var(--red);
+  border-color: var(--orange);
+  color: var(--orange);
 }
 
 .message {
@@ -143,6 +145,21 @@ figure img.active {
 
 .img-25 {
   width: 25%;
+}
+
+.scoreboard {
+  width: 100%;
+}
+.scoreboard td {
+  text-align: center;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-times {
+  color: red;
 }
 
 /* Timer */
@@ -172,8 +189,8 @@ svg {
 svg circle {
   /* animation-duration value should match
      with const COUNTDOWN and let countdown (app.js,
-     line 131 and 132 respectively  */
-  animation: countdown 10s linear infinite forwards;
+     line 152 and 153 respectively  */
+  animation: countdown 10s linear forwards;
   fill: none;
   stroke-dasharray: 113px;
   stroke-dashoffset: 0px;
@@ -186,7 +203,6 @@ svg circle {
   from {
     stroke-dashoffset: 0px;
   }
-
   to {
     stroke-dashoffset: 113px;
   }
@@ -204,7 +220,6 @@ svg circle {
   body {
     font-size: .67em;
   }
-
   .container {
     width: calc(100% - 65px);
   }
