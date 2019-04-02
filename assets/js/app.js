@@ -148,9 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const runTimer = () => {
     const countdownNumber = document.getElementById('countdown-number');
     // Change const COUNTDOWN and let countdown to desired number
-    // Note: Be sure to change (site.css, line 193) to match the animation duration
-    const COUNTDOWN = 10;
-    let countdown = 10;
+    // Note: Be sure to change (site.css, line 195) to match the animation duration
+    const COUNTDOWN = 20;
+    let countdown = 20;
     countdownNumber.textContent = countdown;
     timerID = setInterval(() => {
       countdown = --countdown < 0 ? COUNTDOWN : countdown;

@@ -1,3 +1,9 @@
 # Trivia Game
+A Trivia Game using Open Trivia DB API: `https://opentdb.com/`
 
-Content coming soon
+# How to Play
+Trivia Game has 10 questions total. Click on `Start Game` to begin the game. See your score at the end of the game!
+
+## Known Issues
+- It's possible that user will get the same question over and over
+- Correct answers will return as incorrect because of character codes? i.e. Adios 

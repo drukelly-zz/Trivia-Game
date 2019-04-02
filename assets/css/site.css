@@ -131,8 +131,9 @@ figure img.active {
 }
 
 .options button:hover {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--white);
+  color: var(--white);
+  text-shadow: 1px 1px 5px var(--offblack);
 }
 
 .message {
@@ -141,6 +142,7 @@ figure img.active {
 
 .hide {
   display: none;
+  height: 0;
 }
 
 .img-25 {
@@ -190,7 +192,7 @@ svg circle {
   /* animation-duration value should match
      with const COUNTDOWN and let countdown (app.js,
      line 152 and 153 respectively  */
-  animation: countdown 10s linear forwards;
+  animation: countdown 20s linear forwards;
   fill: none;
   stroke-dasharray: 113px;
   stroke-dashoffset: 0px;
