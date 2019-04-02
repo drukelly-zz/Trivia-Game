@@ -40,6 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
       xhr.send();
     }
   }
+  // A helper function to decode HTML entities
+  // https://stackoverflow.com/questions/3700326/decode-amp-back-to-in-javascript
+  const parseHTML = (html) => {
+    let parser = new DOMParser,
+      dom = parser.parseFromString(
+        `<!doctype html><body>${html}`, "text/html"
+      );
+    return dom.body.textContent;
+  }
   // All done with Trivia
   const doneWithTrivia = () => {
     statsDiv.remove();
@@ -96,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       doneWithTrivia();
     } else {
       document.querySelector(".options").innerHTML = "";
-      document.querySelector(".total-indicator").firstElementChild.textContent = index+1;
+      document.querySelector(".total-indicator").firstElementChild.textContent = index + 1;
       callAPI(response, index);
       messageDiv.classList.add("hide");
       qaDiv.classList.remove("hide");
@@ -118,10 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Loop through each button
     answerButtons.forEach(answer => {
       let button = document.createElement("button");
-      button.innerHTML = answer;
+      button.innerHTML = parseHTML(answer);
       button.addEventListener("click", (event) => {
-        selectedAnswer = button.innerHTML;
-        button.innerHTML === correctAnswer ? isCorrect("Correct!") : isWrong("Wrong!");
+        selectedAnswer = 1;
+        button.innerHTML === parseHTML(correctAnswer) ? isCorrect("Correct!") : isWrong("Wrong!");
       });
       document.querySelector(".options").appendChild(button);
     });

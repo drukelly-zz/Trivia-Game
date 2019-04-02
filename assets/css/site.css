@@ -191,7 +191,7 @@ svg {
 svg circle {
   /* animation-duration value should match
      with const COUNTDOWN and let countdown (app.js,
-     line 152 and 153 respectively  */
+     line 161 and 162 respectively  */
   animation: countdown 20s linear forwards;
   fill: none;
   stroke-dasharray: 113px;
